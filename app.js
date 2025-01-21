@@ -1,5 +1,6 @@
 const nombreInput = document.querySelector("#amigo");
 const listaAmigos = document.querySelector("#listaAmigos");
+const resultado = document.querySelector("#resultado")
 
 let amigos = [];
 
@@ -13,14 +14,28 @@ function agregarAmigo() {
     }
 
     amigos.push(nombre);
-    nombreInput.value = ""
-    actualizarLista()
+    nombreInput.value = "";
+    actualizarLista();
 };
 
 function actualizarLista() {
-    listaAmigos.innerHTML = ""
+    listaAmigos.innerHTML = "";
 
     for (const amigo of amigos) {
-        listaAmigos.innerHTML += `<li>${amigo}</li>`
+        listaAmigos.innerHTML += `<li>${amigo}</li>`;
     }
+}
+
+function sortearAmigo() {
+    if (!amigos.length) {
+        alert("No hay amigos aun.");
+        return;
+    }
+
+    const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+    const amigoSecreto = amigos[indiceAleatorio]
+
+    resultado.innerHTML = amigoSecreto
+    amigos = []
+    actualizarLista()
 }
