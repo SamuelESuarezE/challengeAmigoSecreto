@@ -13,6 +13,12 @@ function agregarAmigo() {
         return;
     }
 
+    if (amigos.includes(nombre)) {
+        alert("¡Este amigo ya esta en la lista!")
+        nombreInput.value = "";
+        return;
+    }
+
     amigos.push(nombre);
     nombreInput.value = "";
     actualizarLista();
