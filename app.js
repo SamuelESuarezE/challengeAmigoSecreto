@@ -35,13 +35,14 @@ function actualizarLista() {
 function sortearAmigo() {
     if (!amigos.length) {
         alert("No hay amigos aun.");
+        resultado.innerHTML = '';
         return;
     }
 
     const indiceAleatorio = Math.floor(Math.random() * amigos.length);
-    const amigoSecreto = amigos[indiceAleatorio]
+    const amigoSecreto = amigos[indiceAleatorio];
 
-    resultado.innerHTML = amigoSecreto
-    amigos = []
-    actualizarLista()
+    resultado.innerHTML = amigoSecreto;
+    amigos = amigos.filter(amigo => amigo != amigoSecreto);
+    actualizarLista();
 }
